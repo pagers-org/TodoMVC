@@ -7,6 +7,13 @@
     "apps/*",
     "assignment/*"
   ],
+  "scripts": {
+    "//0": "======================================================================================================================[ run special package ]",
+    "vanilla": "yarn workspace @fecrash/vanilla",
+    "vue": "yarn workspace @fecrash/vue",
+    "react": "yarn workspace @fecrash/react",
+    "svelte": "yarn workspace @fecrash/svelte"
+  },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^5.36.0",
     "@typescript-eslint/parser": "^5.36.0",
