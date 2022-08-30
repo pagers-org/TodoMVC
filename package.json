@@ -1,0 +1,19 @@
+{
+  "name": "@fecrash/todo-mvc-workspace",
+  "version": "0.0.1",
+  "author": "InSeong-So",
+  "packageManager": "yarn@3.2.3",
+  "workspaces": [
+    "apps/*",
+    "assignment/*"
+  ],
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.36.0",
+    "@typescript-eslint/parser": "^5.36.0",
+    "eslint": "^8.23.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "prettier": "^2.7.1",
+    "typescript": "^4.8.2"
+  }
+}
