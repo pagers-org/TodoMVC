@@ -5,7 +5,7 @@
   "packageManager": "yarn@3.2.3",
   "workspaces": [
     "apps/*",
-    "assignment/*"
+    "assignments/*"
   ],
   "scripts": {
     "//0": "======================================================================================================================[ run special package ]",

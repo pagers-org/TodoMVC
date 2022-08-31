@@ -35,11 +35,16 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
       {\
         "name": "@fecrash/vue",\
         "reference": "workspace:apps/vue"\
+      },\
+      {\
+        "name": "@fecrash/inseong-so",\
+        "reference": "workspace:assignments/inseong-so"\
       }\
     ],\
     "enableTopLevelFallback": true,\
     "ignorePatternData": "(^(?:\\\\.yarn\\\\/sdks(?:\\\\/(?!\\\\.{1,2}(?:\\\\/|$))(?:(?:(?!(?:^|\\\\/)\\\\.{1,2}(?:\\\\/|$)).)*?)|$))$)",\
     "fallbackExclusionList": [\
+      ["@fecrash/inseong-so", ["workspace:assignments/inseong-so"]],\
       ["@fecrash/react", ["workspace:apps/react"]],\
       ["@fecrash/svelte", ["workspace:apps/svelte"]],\
       ["@fecrash/todo-mvc-workspace", ["workspace:."]],\
@@ -500,6 +505,22 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["strip-json-comments", "npm:3.1.1"]\
           ],\
           "linkType": "HARD"\
+        }]\
+      ]],\
+      ["@fecrash/inseong-so", [\
+        ["workspace:assignments/inseong-so", {\
+          "packageLocation": "./assignments/inseong-so/",\
+          "packageDependencies": [\
+            ["@fecrash/inseong-so", "workspace:assignments/inseong-so"],\
+            ["@types/react", "npm:18.0.17"],\
+            ["@types/react-dom", "npm:18.0.6"],\
+            ["@vitejs/plugin-react", "virtual:c41de215b5335b76fa9e0c482c322c1b9f734c3af2f9de6c5d703d00bdf1f2da4eecd59fe82b1e8346cc0a5bbf9fd1a9a47d0fc4696914245c0737904ee33f3b#npm:2.0.1"],\
+            ["react", "npm:18.2.0"],\
+            ["react-dom", "virtual:c41de215b5335b76fa9e0c482c322c1b9f734c3af2f9de6c5d703d00bdf1f2da4eecd59fe82b1e8346cc0a5bbf9fd1a9a47d0fc4696914245c0737904ee33f3b#npm:18.2.0"],\
+            ["shortid", "npm:2.2.16"],\
+            ["vite", "virtual:c41de215b5335b76fa9e0c482c322c1b9f734c3af2f9de6c5d703d00bdf1f2da4eecd59fe82b1e8346cc0a5bbf9fd1a9a47d0fc4696914245c0737904ee33f3b#npm:3.0.9"]\
+          ],\
+          "linkType": "SOFT"\
         }]\
       ]],\
       ["@fecrash/react", [\
