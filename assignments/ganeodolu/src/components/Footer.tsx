@@ -3,15 +3,16 @@ import React from 'react'
 type FilterType = 'All' | 'Active' | 'Completed' 
 
 interface Props {
+  count: string;
   filterType: FilterType;
   setFilterType: any;
 }
 
 const Footer = (props: Props) => {
-  const { filterType, setFilterType } = props;
+  const { count, filterType, setFilterType } = props;
   return (
 <footer className="footer-container">
-      <p className="todos-count"></p>
+      <p className="todos-count">{count}</p>
       <ul className="filters">
         <li
           className={filterType === 'All' ? 'all-btn active-btn-border' : 'all-btn'}

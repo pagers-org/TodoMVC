@@ -23,9 +23,14 @@ export const App = () => {
     id: 2,
     content: '222',
     isCompleted: true,
+  },
+  {
+    id: 3,
+    content: '333',
+    isCompleted: true,
   }
 ]
-  const [state, setState] = useState<Todo[]>(initialState);
+  const [state, setState] = useState<Todo[]>(initialState.reverse());
   const [todos, setTodos] = useState<Todo[]>([]);
   const [content, setContent] = useState('');
   const [filterType, setFilterType] = useState<FilterType>('All');
@@ -72,7 +77,7 @@ export const App = () => {
       <section>
         <TodoList todos={todos} handleItemCheck={handleItemCheck} />
       </section>
-      <Footer filterType={filterType} setFilterType={setFilterType} />
+      <Footer count={`${filterType} 개수 : ${todos.length} / 전체 개수 : ${state.length}`} filterType={filterType} setFilterType={setFilterType} />
     </>
   );
 };
