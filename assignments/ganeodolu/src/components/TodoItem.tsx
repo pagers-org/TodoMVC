@@ -7,17 +7,18 @@ interface Todo {
 }
 
 interface Props {
-  todo: Todo
+  handleItemCheck: any;
+  todo: Todo;
 }
 
 const TodoItem = (props: Props) => {
-  const { todo } = props;
+  const { todo, handleItemCheck } = props;
   const { id, content, isCompleted} = todo;
 
   return (
-      <div className='todo-item'>
-        <input className="toggle" type="checkbox" />
-        <label>{content}</label>
+      <div className='todo-item' data-id={id}>
+        <input className="toggle" type="checkbox" checked={isCompleted} onChange={() => handleItemCheck(id)} />
+        <label className={isCompleted ? 'todo-complete-label' : 'todo-text-label'}>{content}</label>
         <button className="delete-btn">
           X
         </button>

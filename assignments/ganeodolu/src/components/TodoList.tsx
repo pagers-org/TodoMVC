@@ -8,15 +8,17 @@ interface Todo {
 }
 
 interface Props {
-  todos: Todo[]
+  handleItemCheck: any;
+  todos: Todo[];
 }
 
 const TodoList = (props: Props) => {
-  const { todos } = props;
+  const { todos, handleItemCheck } = props;
   return (
     <div className='todo-list'>
-      {todos.map((todo, idx) => {
-        return <TodoItem todo={todo} key={idx} />
+      {todos.map((todo) => {
+        const { id } = todo;
+        return <TodoItem todo={todo} key={id} handleItemCheck={handleItemCheck} />
       })}
       
     </div>
