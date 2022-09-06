@@ -1,21 +1,23 @@
-import React, { useState } from 'react'
+import { Dispatch, SetStateAction } from "react";
 
 interface Props {
-  handleInputSubmit: any,
-  content: string,
-  setContent: any
+  handleInputSubmit: HandleSubmitEvent;
+  content: string;
+  setContent: Dispatch<SetStateAction<string>>;
 }
 
 const TodoInput = (props: Props) => {
-  const { content, setContent} = props;
-  const { handleInputSubmit} = props;
+  const { handleInputSubmit, content, setContent} = props;
 
-  const handleInputChange = (e: any) => {
+  const handleInputChange: HandleChangeEvent = (e) => {
     setContent(e.target.value);
   }
 
   return (
-    <form className='todo-input-container' onSubmit={handleInputSubmit}>
+    <form 
+      className='todo-input-container' 
+      onSubmit={handleInputSubmit}
+    >
       <input 
         type='text'
         value={content}

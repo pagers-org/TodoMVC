@@ -1,23 +1,23 @@
-import { useState, useEffect } from 'react';
-import TodoList from './components/TodoList';
-import TodoInput from './components/TodoInput';
+import { useEffect, useState } from 'react';
 import TodoFilter from './components/TodoFilter';
+import TodoInput from './components/TodoInput';
+import TodoList from './components/TodoList';
 
 export const App = () => {
   const initialState: Todo[] = [
     {
       id: 1,
-      content: 'ddd',
+      content: '타입 추론',
       isCompleted: false,
     },
     {
       id: 2,
-      content: '222',
+      content: '타입 선언',
       isCompleted: true,
     },
     {
       id: 3,
-      content: '333',
+      content: '타입 설계',
       isCompleted: true,
     }
   ].reverse();
@@ -26,7 +26,7 @@ export const App = () => {
   const [content, setContent] = useState('');
   const [filterType, setFilterType] = useState<FilterType>('All');
 
-  const handleInputSubmit = (e: React.FormEvent<HTMLInputElement>) => {
+  const handleInputSubmit: HandleSubmitEvent = (e) => {
     e.preventDefault();
 
     if (content.length === 0) return
@@ -39,14 +39,14 @@ export const App = () => {
     setContent('');
   }
 
-  const handleItemCheck = (selectedId: number) => {
+  const handleItemCheck: HandleEventId = (selectedId) => {
     const newState = [...state];
     const selectedIndex = newState.findIndex(({ id }) => id === selectedId)
     newState[selectedIndex].isCompleted = !newState[selectedIndex].isCompleted;
     setState([...newState]);
   }
 
-  const handleItemClick = (selectedId: number) => {
+  const handleItemClick: HandleEventId = (selectedId) => {
     const newState = [...state];
     const selectedIndex = newState.findIndex(({ id }) => id === selectedId)
     newState.splice(selectedIndex, 1)
@@ -70,13 +70,24 @@ export const App = () => {
     <>
       <header>
         <h1 className="header-text">Todos</h1>
-        <TodoInput handleInputSubmit={handleInputSubmit} content={content} setContent={setContent} />
+        <TodoInput 
+          handleInputSubmit={handleInputSubmit} 
+          content={content} 
+          setContent={setContent} />
       </header>
       <main>
-        <TodoList todos={todos} handleItemCheck={handleItemCheck} handleItemClick={handleItemClick} />
+        <TodoList 
+          todos={todos} 
+          handleItemCheck={handleItemCheck} 
+          handleItemClick={handleItemClick} 
+        />
       </main>
       <footer className="footer-container">
-        <TodoFilter count={`${filterType} 개수 : ${todos.length} / 전체 개수 : ${state.length}`} filterType={filterType} setFilterType={setFilterType} />
+        <TodoFilter 
+          count={`${filterType} 개수 : ${todos.length} / 전체 개수 : ${state.length}`} 
+          filterType={filterType} 
+          setFilterType={setFilterType} 
+        />
       </footer>
     </>
   );

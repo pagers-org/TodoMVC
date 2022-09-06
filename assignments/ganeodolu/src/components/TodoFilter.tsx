@@ -1,16 +1,51 @@
+import { Dispatch, SetStateAction } from "react";
 import TodoCounter from './TodoCounter';
-
-type FilterType = 'All' | 'Active' | 'Completed'
 
 interface Props {
   count: string;
   filterType: FilterType;
-  setFilterType: any;
+  setFilterType: Dispatch<SetStateAction<FilterType>>;
 }
 
 const TodoFilter = (props: Props) => {
   const { count, filterType, setFilterType } = props;
-  
+  // const FiltersArray: FiltersArrayType[] = [
+  //   {
+  //     typeName: 'All',
+  //     buttonClassName: 'all-btn',
+  //   },
+  //   {
+  //     typeName: 'Active',
+  //     buttonClassName: 'active-todo-btn',
+  //   },
+  //   {
+  //     typeName: 'Completed',
+  //     buttonClassName: 'complete-btn',
+  //   }];  
+
+  // const FilterTemplate = ({typeName, buttonClassName}: {typeName: FilterType, buttonClassName: ButtonClassName}): any => {
+  //   return (
+  //     <li
+  //       className={filterType === typeName ? `${buttonClassName} active-btn-border` : {buttonClassName}}
+  //       onClick={() => setFilterType(typeName)}
+  //     >
+  //       {typeName}
+  //     </li>
+  //   )
+  // }
+
+  // {FiltersArray.map((filter) => {
+  //   const {typeName, buttonClassName} = filter;
+  //   return (
+  //     <li
+  //       className={filterType === typeName ? `${buttonClassName} active-btn-border` : {buttonClassName}}
+  //       onClick={() => setFilterType(typeName)}
+  //     >
+  //       {typeName}
+  //     </li>
+  //   )
+  // })}
+
   return (
     <>
       <TodoCounter count={count} />
