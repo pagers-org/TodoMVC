@@ -29,8 +29,8 @@ export const App = () => {
     content: '333',
     isCompleted: true,
   }
-]
-  const [state, setState] = useState<Todo[]>(initialState.reverse());
+].reverse()
+  const [state, setState] = useState<Todo[]>(initialState);
   const [todos, setTodos] = useState<Todo[]>([]);
   const [content, setContent] = useState('');
   const [filterType, setFilterType] = useState<FilterType>('All');
@@ -38,7 +38,7 @@ export const App = () => {
   const handleInputSubmit = (e: any) => {
     e.preventDefault();
     const newTodo = {
-      id: state.length === 0 ? 1 : state[state.length - 1].id + 1,
+      id: state.length === 0 ? 1 : state[0].id + 1,
       content: content,
       isCompleted: false,
     }
@@ -54,6 +54,12 @@ export const App = () => {
     setState([...newState]); 
   }
 
+  const handleItemClick = (selectedId: number) => {
+    const newState = [...state];
+    const selectedIndex = newState.findIndex(({id}) => id === selectedId)
+    newState.splice(selectedIndex, 1)
+    setState([...newState])
+  }
 
   useEffect(() => {
     setTodos(state.filter(({isCompleted}) => {
@@ -75,7 +81,7 @@ export const App = () => {
         <TodoInput handleInputSubmit={handleInputSubmit} content={content} setContent={setContent}  />
       </header>
       <section>
-        <TodoList todos={todos} handleItemCheck={handleItemCheck} />
+        <TodoList todos={todos} handleItemCheck={handleItemCheck} handleItemClick={handleItemClick} />
       </section>
       <Footer count={`${filterType} 개수 : ${todos.length} / 전체 개수 : ${state.length}`} filterType={filterType} setFilterType={setFilterType} />
     </>
