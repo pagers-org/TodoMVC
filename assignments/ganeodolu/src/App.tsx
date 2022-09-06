@@ -1,6 +1,7 @@
+import { useState, useEffect } from 'react';
 import TodoList from './components/TodoList';
 import TodoInput from './components/TodoInput';
-import { useState, useEffect } from 'react';
+import Footer from './components/Footer';
 
 interface Todo {
   id: number;
@@ -48,6 +49,7 @@ export const App = () => {
     setState([...newState]); 
   }
 
+
   useEffect(() => {
     setTodos(state.filter(({isCompleted}) => {
       if(filterType === 'Active'){
@@ -70,29 +72,7 @@ export const App = () => {
       <section>
         <TodoList todos={todos} handleItemCheck={handleItemCheck} />
       </section>
-      <footer className="footer-container">
-      <p className="todos-count"></p>
-      <ul className="filters">
-        <li
-          className={filterType === 'All' ? 'all-btn active-btn-border' : 'all-btn'}
-          // onClick={}
-        >
-          All
-        </li>
-        <li
-          className={filterType === 'Active' ? 'active-todo-btn active-btn-border':'active-todo-btn'}
-          // onClick={}
-        >
-          Active
-        </li>
-        <li
-          className={filterType === 'Completed' ? 'complete-btn active-btn-border' : 'complete-btn'}
-          // onClick={}
-        >
-          Completed
-        </li>
-      </ul>
-    </footer>
+      <Footer filterType={filterType} setFilterType={setFilterType} />
     </>
   );
 };
