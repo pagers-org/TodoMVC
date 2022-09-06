@@ -1,6 +1,6 @@
-import React from 'react'
+import TodoCounter from './TodoCounter';
 
-type FilterType = 'All' | 'Active' | 'Completed' 
+type FilterType = 'All' | 'Active' | 'Completed'
 
 interface Props {
   count: string;
@@ -8,11 +8,12 @@ interface Props {
   setFilterType: any;
 }
 
-const Footer = (props: Props) => {
+const TodoFilter = (props: Props) => {
   const { count, filterType, setFilterType } = props;
+  
   return (
-<footer className="footer-container">
-      <p className="todos-count">{count}</p>
+    <>
+      <TodoCounter count={count} />
       <ul className="filters">
         <li
           className={filterType === 'All' ? 'all-btn active-btn-border' : 'all-btn'}
@@ -21,7 +22,7 @@ const Footer = (props: Props) => {
           All
         </li>
         <li
-          className={filterType === 'Active' ? 'active-todo-btn active-btn-border':'active-todo-btn'}
+          className={filterType === 'Active' ? 'active-todo-btn active-btn-border' : 'active-todo-btn'}
           onClick={() => setFilterType('Active')}
         >
           Active
@@ -33,9 +34,9 @@ const Footer = (props: Props) => {
           Completed
         </li>
       </ul>
-    </footer>
+    </>
   )
 }
 
-export default Footer
+export default TodoFilter
 
