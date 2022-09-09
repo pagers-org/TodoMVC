@@ -4,29 +4,13 @@ import { nanoid } from 'nanoid';
 interface Props {
   children: ReactNode
 }
-const initialState: Todo[] = [
-  {
-    id: '1',
-    content: '타입 추론',
-    isCompleted: false,
-  },
-  {
-    id: '2',
-    content: '타입 선언',
-    isCompleted: true,
-  },
-  {
-    id: '3',
-    content: '타입 설계',
-    isCompleted: true,
-  }
-].reverse();
+
 const TodosValueContext = createContext<Todo[]>([]);
+const TodosTypeContext = createContext<FilterType>('All');
 const TodosActionsContext = createContext<any>(() => { }); // 타입 수정할 것
 
-
-
 const TodosProvider = ({ children }: Props) => {
+  const [filterType, setFilterType] = useState<FilterType>('All');
   const [todos, setTodos] = useState<Todo[]>([]);
   const actions = useMemo(
     () => ({
@@ -40,10 +24,22 @@ const TodosProvider = ({ children }: Props) => {
         setTodos((prevTodos: Todo[]) => [newTodo, ...prevTodos]);
       },
       toggle(selectedId: string) {
-
+        setTodos((prevTodos: Todo[]) =>
+          prevTodos.map((todo) =>
+            todo.id === selectedId
+              ? {
+                ...todo,
+                isCompleted: !todo.isCompleted
+              } : todo
+          ))
       },
       remove(selectedId: string) {
-
+        setTodos((prevTodos: Todo[]) =>
+          prevTodos.filter((todo) => todo.id !== selectedId)
+        )
+      },
+      changeFilter(type: FilterType) {
+        setFilterType(type)
       }
     }),
     []
@@ -51,11 +47,21 @@ const TodosProvider = ({ children }: Props) => {
 
   return (
     <TodosActionsContext.Provider value={actions}>
-      <TodosValueContext.Provider value={todos}>
-        {children}
-      </TodosValueContext.Provider>
+      <TodosTypeContext.Provider value={filterType}>
+        <TodosValueContext.Provider value={todos}>
+          {children}
+        </TodosValueContext.Provider>
+      </TodosTypeContext.Provider>
     </TodosActionsContext.Provider>
   )
+}
+
+function useTodosType() {
+  const value = useContext(TodosTypeContext);
+  if (value === undefined) {
+    throw new Error('useTodosType should be used within TodosProvider');
+  }
+  return value;
 }
 
 function useTodosValue() {
@@ -74,6 +80,6 @@ function useTodosActions() {
   return value;
 }
 
-export { useTodosValue, useTodosActions }
+export { useTodosValue, useTodosActions, useTodosType }
 
 export default TodosProvider

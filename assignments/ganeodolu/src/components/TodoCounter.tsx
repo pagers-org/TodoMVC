@@ -1,14 +1,10 @@
-import React from 'react'
+import { useTodosValue } from '../context/TodosProvider';
 
-interface Props {
-  count: string; 
-}
-
-const TodoCounter = (props: Props) => {
-  const { count } = props;
+const TodoCounter = () => {
+  const todos = useTodosValue();
 
   return (
-    <p className="todos-count">{count}</p>
+    <p className="todos-count">{`미완료 : ${todos.filter((todo) => !todo.isCompleted).length} 개 / 전체 : ${todos.length} 개`}</p>
   )
 }
 

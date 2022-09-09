@@ -1,31 +1,37 @@
-import { Dispatch, SetStateAction } from "react";
+import { useState } from "react";
+import { useTodosActions } from '../context/TodosProvider';
 
-interface Props {
-  handleInputSubmit: HandleSubmitEvent;
-  content: string;
-  setContent: Dispatch<SetStateAction<string>>;
-}
-
-const TodoInput = (props: Props) => {
-  const { handleInputSubmit, content, setContent} = props;
+const TodoInput = () => {
+  const [content, setContent] = useState('');
+  const { add } = useTodosActions();
 
   const handleInputChange: HandleChangeEvent = (e) => {
     setContent(e.target.value);
   }
 
+  const handleInputSubmit: HandleSubmitEvent = (e) => {
+    e.preventDefault();
+    if (content.length === 0) return
+    add(content);
+    setContent('');
+  }
+
   return (
-    <form 
-      className='todo-input-container' 
-      onSubmit={handleInputSubmit}
-    >
-      <input 
-        type='text'
-        value={content}
-        className='todo-input' 
-        placeholder='할일을 입력해주세요'
-        onChange={handleInputChange} 
-      />
-    </form>
+    <header>
+      <h1 className="header-text">Todos</h1>
+      <form
+        className='todo-input-container'
+        onSubmit={handleInputSubmit}
+      >
+        <input
+          type='text'
+          value={content}
+          className='todo-input'
+          placeholder='할일을 입력해주세요'
+          onChange={handleInputChange}
+        />
+      </form>
+    </header>
   )
 }
 

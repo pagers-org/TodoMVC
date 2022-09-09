@@ -1,28 +1,28 @@
 import TodoItem from './TodoItem';
+import TodoFilter from './TodoFilter';
+import { useTodosValue, useTodosType } from '../context/TodosProvider';
 
-interface Props {
-  handleItemCheck: (id: string) => void;
-  handleItemClick: (id: string) => void;
-  todos: Todo[];
-}
+const TodoList = () => {
+  const todos = useTodosValue();
+  const filterType = useTodosType();
 
-const TodoList = (props: Props) => {
-  const { todos, handleItemCheck, handleItemClick } = props;
-  
   return (
-    <div className='todo-list'>
+    <main className='todo-list'>
       {todos.map((todo) => {
-        const { id } = todo;
-        return (
-          <TodoItem 
-            todo={todo} 
-            key={id} 
-            handleItemCheck={handleItemCheck} 
-            handleItemClick={handleItemClick} 
-          />)
+        const { id, isCompleted } = todo;
+
+        if (filterType === 'Active') {
+          return (!isCompleted && <TodoItem todo={todo} key={id} />)
+        }
+        if (filterType === 'Completed') {
+          return (isCompleted && <TodoItem todo={todo} key={id} />)
+        }
+        if (filterType === 'All') {
+          return (<TodoItem todo={todo} key={id} />)
+        } 
       })}
-      
-    </div>
+      <TodoFilter />
+    </main>
   )
 }
 
