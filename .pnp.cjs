@@ -602,6 +602,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@ganeodolu/react", "workspace:assignments/ganeodolu"],\
             ["@types/react", "npm:18.0.18"],\
             ["@types/react-dom", "npm:18.0.6"],\
+            ["@types/shortid", "npm:0.0.29"],\
             ["@vitejs/plugin-react", "virtual:c41de215b5335b76fa9e0c482c322c1b9f734c3af2f9de6c5d703d00bdf1f2da4eecd59fe82b1e8346cc0a5bbf9fd1a9a47d0fc4696914245c0737904ee33f3b#npm:2.0.1"],\
             ["react", "npm:18.2.0"],\
             ["react-dom", "virtual:c41de215b5335b76fa9e0c482c322c1b9f734c3af2f9de6c5d703d00bdf1f2da4eecd59fe82b1e8346cc0a5bbf9fd1a9a47d0fc4696914245c0737904ee33f3b#npm:18.2.0"],\
@@ -873,6 +874,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/@types-scheduler-npm-0.16.2-ba3a7d8c68-b6b4dcfeae.zip/node_modules/@types/scheduler/",\
           "packageDependencies": [\
             ["@types/scheduler", "npm:0.16.2"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["@types/shortid", [\
+        ["npm:0.0.29", {\
+          "packageLocation": "./.yarn/cache/@types-shortid-npm-0.0.29-e4223b4e78-06d940fabc.zip/node_modules/@types/shortid/",\
+          "packageDependencies": [\
+            ["@types/shortid", "npm:0.0.29"]\
           ],\
           "linkType": "HARD"\
         }]\

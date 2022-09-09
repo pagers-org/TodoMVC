@@ -2,21 +2,22 @@ import { useEffect, useState } from 'react';
 import TodoFilter from './components/TodoFilter';
 import TodoInput from './components/TodoInput';
 import TodoList from './components/TodoList';
+import shortId from 'shortid';
 
 export const App = () => {
   const initialState: Todo[] = [
     {
-      id: 1,
+      id: '1',
       content: '타입 추론',
       isCompleted: false,
     },
     {
-      id: 2,
+      id: '2',
       content: '타입 선언',
       isCompleted: true,
     },
     {
-      id: 3,
+      id: '3',
       content: '타입 설계',
       isCompleted: true,
     }
@@ -31,7 +32,7 @@ export const App = () => {
 
     if (content.length === 0) return
     const newTodo = {
-      id: state.length === 0 ? 1 : state[0].id + 1,
+      id: shortId.generate(),
       content: content,
       isCompleted: false,
     }

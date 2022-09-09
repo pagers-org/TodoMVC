@@ -1,12 +1,12 @@
 interface Todo {
-  id: number;
+  id: string;
   content: string;
   isCompleted: boolean;
 }
 
 type FilterType = "All" | "Active" | "Completed";
 
-type HandleEventId = (id: number) => void;
+type HandleEventId = (id: string) => void;
 
 type HandleSubmitEvent = (e: React.SyntheticEvent<HTMLFormElement>) => void;
 

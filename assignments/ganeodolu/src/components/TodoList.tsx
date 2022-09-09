@@ -1,8 +1,8 @@
 import TodoItem from './TodoItem';
 
 interface Props {
-  handleItemCheck: (id: number) => void;
-  handleItemClick: (id: number) => void;
+  handleItemCheck: (id: string) => void;
+  handleItemClick: (id: string) => void;
   todos: Todo[];
 }
 
