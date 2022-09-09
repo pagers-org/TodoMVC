@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import TodoFilter from './components/TodoFilter';
 import TodoInput from './components/TodoInput';
 import TodoList from './components/TodoList';
-import shortId from 'shortid';
+import { nanoid } from 'nanoid';
 
 export const App = () => {
   const initialState: Todo[] = [
@@ -32,7 +32,7 @@ export const App = () => {
 
     if (content.length === 0) return
     const newTodo = {
-      id: shortId.generate(),
+      id: nanoid(),
       content: content,
       isCompleted: false,
     }

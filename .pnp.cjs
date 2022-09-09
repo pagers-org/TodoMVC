@@ -602,11 +602,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@ganeodolu/react", "workspace:assignments/ganeodolu"],\
             ["@types/react", "npm:18.0.18"],\
             ["@types/react-dom", "npm:18.0.6"],\
-            ["@types/shortid", "npm:0.0.29"],\
             ["@vitejs/plugin-react", "virtual:c41de215b5335b76fa9e0c482c322c1b9f734c3af2f9de6c5d703d00bdf1f2da4eecd59fe82b1e8346cc0a5bbf9fd1a9a47d0fc4696914245c0737904ee33f3b#npm:2.0.1"],\
+            ["nanoid", "npm:4.0.0"],\
             ["react", "npm:18.2.0"],\
             ["react-dom", "virtual:c41de215b5335b76fa9e0c482c322c1b9f734c3af2f9de6c5d703d00bdf1f2da4eecd59fe82b1e8346cc0a5bbf9fd1a9a47d0fc4696914245c0737904ee33f3b#npm:18.2.0"],\
-            ["shortid", "npm:2.2.16"],\
             ["typescript", "patch:typescript@npm%3A4.8.2#~builtin<compat/typescript>::version=4.8.2&hash=a1c5e5"],\
             ["vite", "virtual:c41de215b5335b76fa9e0c482c322c1b9f734c3af2f9de6c5d703d00bdf1f2da4eecd59fe82b1e8346cc0a5bbf9fd1a9a47d0fc4696914245c0737904ee33f3b#npm:3.0.9"]\
           ],\
@@ -874,15 +873,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/@types-scheduler-npm-0.16.2-ba3a7d8c68-b6b4dcfeae.zip/node_modules/@types/scheduler/",\
           "packageDependencies": [\
             ["@types/scheduler", "npm:0.16.2"]\
-          ],\
-          "linkType": "HARD"\
-        }]\
-      ]],\
-      ["@types/shortid", [\
-        ["npm:0.0.29", {\
-          "packageLocation": "./.yarn/cache/@types-shortid-npm-0.0.29-e4223b4e78-06d940fabc.zip/node_modules/@types/shortid/",\
-          "packageDependencies": [\
-            ["@types/shortid", "npm:0.0.29"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -3083,6 +3073,13 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/nanoid-npm-3.3.4-3d250377d6-2fddd6dee9.zip/node_modules/nanoid/",\
           "packageDependencies": [\
             ["nanoid", "npm:3.3.4"]\
+          ],\
+          "linkType": "HARD"\
+        }],\
+        ["npm:4.0.0", {\
+          "packageLocation": "./.yarn/cache/nanoid-npm-4.0.0-924f5c6312-7d5946df5c.zip/node_modules/nanoid/",\
+          "packageDependencies": [\
+            ["nanoid", "npm:4.0.0"]\
           ],\
           "linkType": "HARD"\
         }]\
