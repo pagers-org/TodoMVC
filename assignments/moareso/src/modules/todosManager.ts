@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import shortid from 'shortid';
 
+// Todo리스트의 crud를 status와 함께 관리한다.
 export type TodoStatus = 'active' | 'completed';
 
 export type Todo = {

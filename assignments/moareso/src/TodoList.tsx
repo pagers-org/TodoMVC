@@ -1,9 +1,11 @@
 import React from 'react';
 import TodoItem from './TodoItem';
 import todosManager, { Todo, TodoStatus } from './modules/todosManager';
-import listRendererManager from './modules/listRendererManager';
+import listStatusManager from './modules/listStatusManager';
 import { ItemList } from './ItemList';
 
+// Todo리스트 도메인의 의존성을 가진 Todo리스트 컴포넌트
+// ItemList라는 도메인 의존성이 없는 컴포넌트에 필요한 prop을 내려 반환한다.
 type FooterStatusButton = {
   text: string;
   isActive: boolean;
@@ -12,7 +14,7 @@ type FooterStatusButton = {
 
 const TodoList = () => {
   const { todos: todosAll, addTodo, removeTodo, toggleTodo } = todosManager();
-  const { visibleStatus, getListBy, updateVisibleStatus } = listRendererManager<Todo, TodoStatus>(todosAll, 'all');
+  const { visibleStatus, getListBy, updateVisibleStatus } = listStatusManager<Todo, TodoStatus>(todosAll, 'all');
 
   // renderTodoItem
   const renderTodoItem = (todo: Todo) => (
