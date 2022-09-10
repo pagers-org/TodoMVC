@@ -1,6 +1,10 @@
 import { useState } from "react";
 import { useTodosActions } from '../context/TodosProvider';
 
+type HandleSubmitEvent = (e: React.SyntheticEvent<HTMLFormElement>) => void;
+
+type HandleChangeEvent = (e: React.ChangeEvent<HTMLInputElement>) => void;
+
 const TodoInput = () => {
   const [content, setContent] = useState('');
   const { add } = useTodosActions();

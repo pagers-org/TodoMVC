@@ -1,4 +1,3 @@
-import { Dispatch, SetStateAction } from "react";
 import TodoCounter from './TodoCounter';
 import { useTodosType, useTodosActions } from '../context/TodosProvider';
 

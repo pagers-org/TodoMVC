@@ -1,13 +1,15 @@
 import { createContext, ReactNode, useContext, useMemo, useState } from 'react'
 import { nanoid } from 'nanoid';
 
+type FilterType = "All" | "Active" | "Completed";
+
+const TodosValueContext = createContext<Todo[] | undefined>(undefined);
+const TodosTypeContext = createContext<FilterType>('All');
+const TodosActionsContext = createContext<any | undefined>(undefined); // any 수정필요
+
 interface Props {
   children: ReactNode
 }
-
-const TodosValueContext = createContext<Todo[]>([]);
-const TodosTypeContext = createContext<FilterType>('All');
-const TodosActionsContext = createContext<any>(() => { }); // 타입 수정할 것
 
 const TodosProvider = ({ children }: Props) => {
   const [filterType, setFilterType] = useState<FilterType>('All');
