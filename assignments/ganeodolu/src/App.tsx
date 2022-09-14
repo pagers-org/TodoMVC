@@ -3,7 +3,6 @@ import TodoList from './components/TodoList';
 import TodosProvider from './context/TodosProvider';
 
 export const App = () => {
-
   return (
     <TodosProvider>
       <TodoInput />
