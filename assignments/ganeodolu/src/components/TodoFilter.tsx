@@ -1,36 +1,35 @@
+import { useTodosActions, useTodosType } from '../context/TodosProvider';
+import { FILTER_TYPE, FILTER_TYPE_ARRAY } from '../utils/constants';
 import TodoCounter from './TodoCounter';
-import { useTodosType, useTodosActions } from '../context/TodosProvider';
 
 const TodoFilter = () => {
   const filterType = useTodosType();
   const { changeFilter } = useTodosActions();
 
+  const filterTypeTable = {
+    [FILTER_TYPE.ALL]: 'all-btn',
+    [FILTER_TYPE.ACTIVE]: 'active-todo-btn',
+    [FILTER_TYPE.COMPLETED]: 'complete-btn',
+  };
+
   return (
     <footer className="footer-container">
       <TodoCounter />
       <ul className="filters">
-        <li
-          className={filterType === 'All' ? 'all-btn active-btn-border' : 'all-btn'}
-          onClick={() => changeFilter('All')}
-        >
-          All
-        </li>
-        <li
-          className={filterType === 'Active' ? 'active-todo-btn active-btn-border' : 'active-todo-btn'}
-          onClick={() => changeFilter('Active')}
-        >
-          Active
-        </li>
-        <li
-          className={filterType === 'Completed' ? 'complete-btn active-btn-border' : 'complete-btn'}
-          onClick={() => changeFilter('Completed')}
-        >
-          Completed
-        </li>
+        {FILTER_TYPE_ARRAY.map(filterName => {
+          return (
+            <li
+              className={`${filterTypeTable[filterName]} ${filterName === filterType ? 'active-btn-border' : ''}`}
+              onClick={() => changeFilter(filterName)}
+              key={filterName}
+            >
+              {filterName}
+            </li>
+          );
+        })}
       </ul>
     </footer>
-  )
-}
+  );
+};
 
-export default TodoFilter
-
+export default TodoFilter;
