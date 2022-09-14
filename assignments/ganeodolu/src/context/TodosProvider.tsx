@@ -1,18 +1,11 @@
-import React, { createContext, ReactNode, useContext, useMemo, useState } from 'react';
 import { nanoid } from 'nanoid';
-
-type FilterType = 'All' | 'Active' | 'Completed';
+import { PropsWithChildren, createContext, FunctionComponent, ReactNode, useContext, useMemo, useState } from 'react';
 
 const TodosValueContext = createContext<Todo[] | undefined>(undefined);
 const TodosTypeContext = createContext<FilterType>('All');
 const TodosActionsContext = createContext<any | undefined>(undefined); // any 수정필요
 
-interface Props {
-  // children: React.FunctionComponent
-  children: ReactNode;
-}
-
-const TodosProvider = ({ children }: Props) => {
+const TodosProvider: FunctionComponent<PropsWithChildren> = ({ children }) => {
   const [filterType, setFilterType] = useState<FilterType>('All');
   const [todos, setTodos] = useState<Todo[]>([]);
   const actions = useMemo(
