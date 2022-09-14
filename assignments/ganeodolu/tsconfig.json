@@ -21,7 +21,8 @@
     "typeRoots": [
       "@types/"
     ],
-    "jsx": "react-jsx"
+    "jsx": "react-jsx",
+    "suppressImplicitAnyIndexErrors": true,
   },
   "exclude": [
     "node_modules"
