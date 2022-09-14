@@ -8,15 +8,9 @@ const TodoList = () => {
   const filterType = useTodosType();
 
   const filterTypeTable = {
-    [FILTER_TYPE.ALL]: (todo: Todo) => {
-      return <TodoItem todo={todo} key={todo.id} />;
-    },
-    [FILTER_TYPE.ACTIVE]: (todo: Todo) => {
-      return !todo.isCompleted && <TodoItem todo={todo} key={todo.id} />;
-    },
-    [FILTER_TYPE.COMPLETED]: (todo: Todo) => {
-      return todo.isCompleted && <TodoItem todo={todo} key={todo.id} />;
-    },
+    [FILTER_TYPE.ALL]: (todo: Todo) => <TodoItem todo={todo} key={todo.id} />,
+    [FILTER_TYPE.ACTIVE]: (todo: Todo) => !todo.isCompleted && <TodoItem todo={todo} key={todo.id} />,
+    [FILTER_TYPE.COMPLETED]: (todo: Todo) => todo.isCompleted && <TodoItem todo={todo} key={todo.id} />,
   };
 
   return (

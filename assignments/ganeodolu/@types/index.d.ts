@@ -3,3 +3,5 @@ interface Todo {
   content: string;
   isCompleted: boolean;
 }
+
+type FilterType = 'All' | 'Active' | 'Completed';
