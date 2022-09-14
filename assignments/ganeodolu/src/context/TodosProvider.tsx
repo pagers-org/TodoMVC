@@ -1,14 +1,15 @@
-import { createContext, ReactNode, useContext, useMemo, useState } from 'react'
+import React, { createContext, ReactNode, useContext, useMemo, useState } from 'react';
 import { nanoid } from 'nanoid';
 
-type FilterType = "All" | "Active" | "Completed";
+type FilterType = 'All' | 'Active' | 'Completed';
 
 const TodosValueContext = createContext<Todo[] | undefined>(undefined);
 const TodosTypeContext = createContext<FilterType>('All');
 const TodosActionsContext = createContext<any | undefined>(undefined); // any 수정필요
 
 interface Props {
-  children: ReactNode
+  // children: React.FunctionComponent
+  children: ReactNode;
 }
 
 const TodosProvider = ({ children }: Props) => {
@@ -17,71 +18,67 @@ const TodosProvider = ({ children }: Props) => {
   const actions = useMemo(
     () => ({
       add(content: string) {
-        if (content.length === 0) return
+        if (content.length === 0) return;
         const newTodo: Todo = {
           id: nanoid(),
           content,
           isCompleted: false,
-        }
+        };
         setTodos((prevTodos: Todo[]) => [newTodo, ...prevTodos]);
       },
       toggle(selectedId: string) {
         setTodos((prevTodos: Todo[]) =>
-          prevTodos.map((todo) =>
+          prevTodos.map(todo =>
             todo.id === selectedId
               ? {
-                ...todo,
-                isCompleted: !todo.isCompleted
-              } : todo
-          ))
+                  ...todo,
+                  isCompleted: !todo.isCompleted,
+                }
+              : todo,
+          ),
+        );
       },
       remove(selectedId: string) {
-        setTodos((prevTodos: Todo[]) =>
-          prevTodos.filter((todo) => todo.id !== selectedId)
-        )
+        setTodos((prevTodos: Todo[]) => prevTodos.filter(todo => todo.id !== selectedId));
       },
       changeFilter(type: FilterType) {
-        setFilterType(type)
-      }
+        setFilterType(type);
+      },
     }),
-    []
-  )
+    [],
+  );
 
   return (
     <TodosActionsContext.Provider value={actions}>
       <TodosTypeContext.Provider value={filterType}>
-        <TodosValueContext.Provider value={todos}>
-          {children}
-        </TodosValueContext.Provider>
+        <TodosValueContext.Provider value={todos}>{children}</TodosValueContext.Provider>
       </TodosTypeContext.Provider>
     </TodosActionsContext.Provider>
-  )
-}
+  );
+};
 
-function useTodosType() {
+export const useTodosType = () => {
   const value = useContext(TodosTypeContext);
   if (value === undefined) {
     throw new Error('useTodosType should be used within TodosProvider');
   }
   return value;
-}
+};
 
-function useTodosValue() {
+export const useTodosValue = () => {
   const value = useContext(TodosValueContext);
   if (value === undefined) {
     throw new Error('useTodosValue should be used within TodosProvider');
   }
   return value;
-}
+};
 
-function useTodosActions() {
+export const useTodosActions = () => {
   const value = useContext(TodosActionsContext);
   if (value === undefined) {
     throw new Error('useTodosActions should be used within TodosProvider');
   }
   return value;
-}
+};
 
-export { useTodosValue, useTodosActions, useTodosType }
-
-export default TodosProvider
+export default TodosProvider;
