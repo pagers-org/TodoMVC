@@ -1,5 +1,5 @@
 import { nanoid } from 'nanoid';
-import { PropsWithChildren, createContext, FunctionComponent, ReactNode, useContext, useMemo, useState } from 'react';
+import { PropsWithChildren, createContext, FunctionComponent, useContext, useMemo, useState } from 'react';
 
 const TodosValueContext = createContext<Todo[] | undefined>(undefined);
 const TodosTypeContext = createContext<FilterType>('All');
