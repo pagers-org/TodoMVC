@@ -22,7 +22,6 @@
       "@types/"
     ],
     "jsx": "react-jsx",
-    "suppressImplicitAnyIndexErrors": true,
   },
   "exclude": [
     "node_modules"

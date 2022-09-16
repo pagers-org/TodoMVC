@@ -5,28 +5,31 @@ import TodoCounter from './TodoCounter';
 const TodoFilter = () => {
   const filterType = useTodosType();
   const { changeFilter } = useTodosActions();
+  const { ALL, ACTIVE, COMPLETED } = FILTER_TYPE;
 
-  const filterTypeClassNameTable = {
-    [FILTER_TYPE.ALL]: `all-btn ${FILTER_TYPE.ALL === filterType && 'active-btn-border'}`,
-    [FILTER_TYPE.ACTIVE]: `active-todo-btn ${FILTER_TYPE.ACTIVE === filterType && 'active-btn-border'}`,
-    [FILTER_TYPE.COMPLETED]: `complete-btn ${FILTER_TYPE.COMPLETED === filterType && 'active-btn-border'}`,
+  const buttonClass = {
+    [ALL]: `all-btn ${ALL === filterType && 'active-btn-border'}`,
+    [ACTIVE]: `active-todo-btn ${ACTIVE === filterType && 'active-btn-border'}`,
+    [COMPLETED]: `complete-btn ${COMPLETED === filterType && 'active-btn-border'}`,
+  };
+
+  const onClickHandler = (e: React.MouseEvent<HTMLLIElement, MouseEvent>) => {
+    const elementTarget = e.target as HTMLElement;
+    changeFilter(elementTarget.textContent);
   };
 
   return (
     <footer className="footer-container">
       <TodoCounter />
       <ul className="filters">
-        <li className={filterTypeClassNameTable[FILTER_TYPE.ALL]} onClick={() => changeFilter(FILTER_TYPE.ALL)}>
-          {FILTER_TYPE.ALL}
+        <li className={buttonClass[ALL]} onClick={onClickHandler}>
+          {ALL}
         </li>
-        <li className={filterTypeClassNameTable[FILTER_TYPE.ACTIVE]} onClick={() => changeFilter(FILTER_TYPE.ACTIVE)}>
-          {FILTER_TYPE.ACTIVE}
+        <li className={buttonClass[ACTIVE]} onClick={onClickHandler}>
+          {ACTIVE}
         </li>
-        <li
-          className={filterTypeClassNameTable[FILTER_TYPE.COMPLETED]}
-          onClick={() => changeFilter(FILTER_TYPE.COMPLETED)}
-        >
-          {FILTER_TYPE.COMPLETED}
+        <li className={buttonClass[COMPLETED]} onClick={onClickHandler}>
+          {COMPLETED}
         </li>
       </ul>
     </footer>
