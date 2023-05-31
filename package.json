@@ -11,7 +11,7 @@
     "//0": "======================================================================================================================[ run special package ]",
     "vanilla": "yarn workspace @fecrash/vanilla",
     "vue": "yarn workspace @fecrash/vue",
-    "react": "yarn workspace @fecrash/react",
+    "react": "yarn workspace @ganeodolu/react dev",
     "svelte": "yarn workspace @fecrash/svelte"
   },
   "devDependencies": {
